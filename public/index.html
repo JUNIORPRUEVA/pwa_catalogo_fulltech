@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo FULLTECH</title>
+    
+    <!-- PWA Manifest & Theme -->
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/yxWRxM7g/LOGO512512-1-removebg-preview.png">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Main Page -->
+        <div id="main-page">
+            <header class="topbar">
+                <div class="topbar-brand">
+                    <img src="https://i.postimg.cc/yxWRxM7g/LOGO512512-1-removebg-preview.png" alt="FULLTECH Logo" class="logo">
+                    <h1>FULLTECH, CATALOGO</h1>
+                </div>
+                <div class="top-actions">
+                    <button id="shareCatalogBtn" class="icon-button" title="Compartir Catálogo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                    </button>
+                    <button id="installBtn" class="ghost" hidden>Instalar</button>
+                    <button id="newBtn" class="primary" hidden>Nuevo</button>
+                    <button id="loginBtn" class="primary">Login</button>
+                    <button id="logoutBtn" class="ghost" hidden>Salir</button>
+                </div>
+            </header>
+
+            <div id="hero-section" class="hero-section">
+                <button id="editHeroBtn" class="admin-edit-btn">✏️</button>
+                <img src="https://i.postimg.cc/phrCWCBw/15-Ways-To-Stop-Buying-Crap-You-Don-t-Need.jpg" alt="Banner Principal" class="slide active">
+                <img src="https://i.postimg.cc/34qBdGSd/Dise-o-sin-t-tulo-16.png" alt="Banner Principal" class="slide">
+                <img src="https://i.postimg.cc/qRX8FPGW/Oferta-4-Camaras-00001.png" alt="Banner Principal" class="slide">
+
+                <div class="hero-content">
+                    <h2 id="hero-title">Tecnología de Vanguardia</h2>
+                    <p id="hero-subtitle">Descubre las últimas innovaciones y soluciones para tu negocio.</p>
+                    <button id="hero-cta" class="primary">Ver Ofertas</button>
+                </div>
+            </div>
+            
+            <main id="main-content">
+                <div id="filters-container">
+                    <section class="filters">
+                        <div class="search-wrapper">
+                            <input id="q" type="search" placeholder="Buscar producto…">
+                        </div>
+                        <div id="category-buttons" class="category-filters">
+                            <button class="active" data-category="">Todas</button>
+                            <button data-category="ofertas">🔥 Ofertas</button>
+                            <button data-category="HERRAMIENTAS">Herramientas</button>
+                            <button data-category="TECNOLOGIA">Tecnología</button>
+                            <button data-category="SISTEMA DE SEGURIDAD">Sistema de Seguridad</button>
+                        </div>
+                    </section>
+                </div>
+                <section id="grid" class="grid"></section>
+                <div id="not-found" class="not-found-message" hidden>
+                    <p style="font-size: 48px; margin: 0;">😕</p>
+                    <h3>No se encontraron productos</h3>
+                    <p>Intenta cambiar los filtros o el término de búsqueda.</p>
+                </div>
+            </main>
+        </div>
+
+        <!-- Product Detail Page -->
+        <div id="product-page" class="product-container" data-product-id="">
+            <section class="media">
+                <section class="gallery card">
+                    <div id="viewer" class="viewer"></div>
+                    <div id="thumbs" class="thumbs" aria-label="Galería del producto"></div>
+                </section>
+            </section>
+            <aside class="info card">
+                <h2 id="pName" class="p-name"></h2>
+                <p id="pDesc" class="p-desc"></p>
+                <div class="pillrow">
+                    <span id="pCat" class="pill"></span>
+                    <span id="pStock" class="muted"></span>
+                </div>
+                <div class="price-row">
+                    <strong id="pPrice" class="price"></strong>
+                </div>
+                <div class="row" style="margin-top: 20px; justify-content: flex-start;">
+                    <button id="backBtn" class="primary">← Volver</button>
+                    <button id="shareProdDetailBtn" class="icon-button" title="Compartir Producto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-bg-logo"></div>
+        <div class="footer-content">
+             <div class="raffle-promo">
+                <img id="raffleImage" src="https://i.postimg.cc/TP7nrVCW/LAPTOP-2.jpg" alt="Rifa Mensual">
+                <div class="raffle-promo-text">
+                    <h4 id="raffle-promo-title">¡Gran Rifa Mensual!</h4>
+                    <p id="raffle-promo-desc">Participa y gana increíbles premios.</p>
+                    <button id="raffle-participate-btn" class="primary small">Participa</button>
+                </div>
+            </div>
+            <div class="footer-info">
+                <div class="footer-social-links">
+                    <a id="facebookLink" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a id="instagramLink" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
+                <p>© 2024 FULLTECH, SRL. Todos los derechos reservados.</p>
+            </div>
+            <button id="editFooterBtn" class="admin-edit-btn">✏️</button>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/18295319442?text=saludo" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+       <img src="https://i.postimg.cc/Y9PLcKz7/image.png" alt="WhatsApp">
+    </a>
+    
+    <!-- Modales -->
+    <dialog id="loginDialog">
+        <form id="loginForm" method="dialog" class="card">
+            <h3>Acceso</h3>
+            <label>Email <input type="email" name="email" required autocomplete="username"></label>
+            <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
+            <div class="row">
+                <button class="primary" type="submit">
+                    <span class="btn-text">Entrar</span>
+                    <div class="spinner white" style="display: none;"></div>
+                </button>
+                <button type="button" class="closeLogin">Cancelar</button>
+            </div>
+            <p id="loginError" class="error" hidden></p>
+        </form>
+    </dialog>
+    
+    <dialog id="settingsDialog">
+        <form id="settingsForm" method="dialog" class="card">
+            <h3>Configuración del Sitio</h3>
+            <div class="form-row">
+                <label>Slider 1 <input type="url" name="hero_url1" placeholder="https://..."></label>
+                <label>Slider 2 <input type="url" name="hero_url2" placeholder="https://..."></label>
+            </div>
+             <div class="form-row">
+                <label>Slider 3 <input type="url" name="hero_url3" placeholder="https://..."></label>
+            </div>
+            <label>Título del Banner <input type="text" name="hero_title"></label>
+            <label>Subtítulo del Banner <input type="text" name="hero_subtitle"></label>
+            <hr style="margin: 20px 0; border: 1px solid var(--border);">
+            <label>Rifa Imagen <input type="url" name="raffle_img" placeholder="https://..."></label>
+            <label>Título Rifa <input type="text" name="raffle_title"></label>
+            <label>Descripción Rifa <textarea name="raffle_desc" rows="3"></textarea></label>
+            <hr style="margin: 20px 0; border: 1px solid var(--border);">
+            <label>URL Facebook <input type="url" name="fb_url" placeholder="https://facebook.com/..."></label>
+            <label>URL Instagram <input type="url" name="ig_url" placeholder="https://instagram.com/..."></label>
+            <div class="row">
+                <button class="primary" type="submit">Guardar Cambios</button>
+                <button type="button" class="closeSettings">Cancelar</button>
+            </div>
+            <p id="settingsError" class="error" hidden></p>
+        </form>
+    </dialog>
+    
+    <dialog id="raffleDialog">
+        <div class="card">
+             <h3 id="raffle-modal-title">Rifa del Mes</h3>
+             <img id="raffle-modal-img" src="" alt="Imagen de la rifa">
+             <p id="raffle-modal-desc"></p>
+             <div class="row">
+                <button type="button" class="closeRaffle">Cerrar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="prodDialog">
+        <form id="prodForm" method="dialog" class="card">
+            <h3>Producto</h3>
+            <div class="form-row">
+                <label style="flex:1">ID <input name="id" type="text" placeholder="(auto si vacío)" maxlength="20"></label>
+                <label style="flex:2">Nombre <input name="nombre" type="text" required maxlength="80"></label>
+            </div>
+            <div class="form-row">
+                <label style="flex:1">Precio <input name="precio" type="number" min="0" step="0.01" required></label>
+                <label class="upload-wrapper" style="flex:2">
+                    <img class="upload-preview" src="https://placehold.co/48x48/eef2ff/333?text=Img1">
+                    <div>
+                         <span>Imagen 1</span>
+                         <input type="file" name="imagen_file" accept="image/*" class="file-input">
+                         <input type="hidden" name="imagen">
+                         <div class="spinner" style="display: none;"></div>
+                    </div>
+                </label>
+            </div>
+            <div class="form-row">
+                <label class="upload-wrapper" style="flex:1">
+                     <img class="upload-preview" src="https://placehold.co/48x48/eef2ff/333?text=Img2">
+                    <div>
+                        <span>Imagen 2</span>
+                        <input type="file" name="imagen2_file" accept="image/*" class="file-input">
+                        <input type="hidden" name="imagen2">
+                        <div class="spinner" style="display: none;"></div>
+                    </div>
+                </label>
+                <label class="upload-wrapper" style="flex:1">
+                     <img class="upload-preview" src="https://placehold.co/48x48/eef2ff/333?text=Img3">
+                     <div>
+                        <span>Imagen 3</span>
+                        <input type="file" name="imagen3_file" accept="image/*" class="file-input">
+                        <input type="hidden" name="imagen3">
+                        <div class="spinner" style="display: none;"></div>
+                    </div>
+                </label>
+            </div>
+             <div class="form-row">
+                <label class="upload-wrapper" style="flex:1">
+                    <img class="upload-preview" src="https://placehold.co/48x48/eef2ff/333?text=Vid">
+                    <div>
+                        <span>Video</span>
+                        <input type="file" name="video_file" accept="video/*" class="file-input">
+                        <input type="hidden" name="video">
+                        <div class="spinner" style="display: none;"></div>
+                    </div>
+                </label>
+                <label style="flex:1">Categoría 
+                    <select name="categoria">
+                        <option value="HERRAMIENTAS">Herramientas</option>
+                        <option value="TECNOLOGIA">Tecnología</option>
+                        <option value="SISTEMA DE SEGURIDAD">Sistema de Seguridad</option>
+                    </select>
+                </label>
+            </div>
+             <div class="form-row">
+                <label style="flex:1">Stock <input name="stock" type="number" min="0" step="1"></label>
+                 <label style="flex:1; align-items: center; justify-content: center;">
+                    <input name="en_oferta" type="checkbox"> En Oferta
+                </label>
+            </div>
+            <label>Descripción <textarea name="descripcion" rows="3" style="resize:vertical;" maxlength="1000"></textarea></label>
+            <label style="display:flex; align-items:center; gap:6px;">
+                <input name="activo" type="checkbox" checked> Activo
+            </label>
+            <div class="row">
+                <button class="primary" type="submit">
+                    <span class="btn-text">Guardar</span>
+                    <div class="spinner white" style="display: none;"></div>
+                </button>
+                <button type="button" class="closeProd">Cancelar</button>
+            </div>
+            <p id="prodError" class="error" hidden></p>
+        </form>
+    </dialog>
+
+    <!-- Template de tarjeta -->
+    <template id="cardTpl">
+        <article class="card">
+            <div class="sale-badge" hidden>Oferta</div>
+            <button class="icon-button share-prod-btn" title="Compartir Producto">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            </button>
+            <img class="thumb" alt="">
+            <div class="content">
+                <h4 class="name"></h4>
+                <p class="desc" title=""></p>
+                <div class="meta">
+                    <span class="cat"></span>
+                    <strong class="price"></strong>
+                </div>
+                 <div style="margin-top: 10px;">
+                    <button class="order-btn small">Pedir por WhatsApp</button>
+                </div>
+                <div class="admin-actions">
+                    <button type="button" class="small editBtn">Editar</button>
+                    <button type="button" class="small danger delBtn">Eliminar</button>
+                </div>
+            </div>
+        </article>
+    </template>
+    
+    <!-- JavaScript -->
+    <script src="app.js" type="module"></script>
+</body>
+</html>
+
